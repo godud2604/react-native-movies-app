@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react";
-import { ActivityIndicator, Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList } from "react-native";
 import Swiper from "react-native-swiper";
 import { useQuery, useQueryClient } from "react-query";
 import styled from "styled-components/native";
@@ -24,17 +24,10 @@ const TrendingScroll = styled.FlatList`
   margin-top: 20px;
 `;
 
-const ListContainer = styled.View`
-  margin-bottom: 40px;
-`;
-
 const ComingSoonTitle = styled(ListTitle)`
   margin-bottom: 20px;
 `;
 
-const VSeparator = styled.View`
-  width: 20px;
-`;
 const HSeparator = styled.View`
   height: 20px;
 `;
@@ -72,6 +65,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
       originalTitle={item.original_title}
       overview={item.overview}
       releaseDate={item.release_date}
+      fullData={item}
     />
   );
   const movieKeyExtractor = (item) => item.id + "";
@@ -105,6 +99,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
                 originalTitle={movie.original_title}
                 voteAverage={movie.vote_average}
                 overview={movie.overview}
+                fullData={movie}
               />
             ))}
           </Swiper>
